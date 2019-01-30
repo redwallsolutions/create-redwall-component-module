@@ -3,14 +3,14 @@
 echo "Welcome to Redwall Component Module Setup (RCMS)";
 echo "Please, what's the project name?"
 read PROJECTNAME
-echo "Nice. Let's create the environment... "
+echo "Nice. Now, what's the github repository of it?"
+read PROJECTREPO
+echo "Great! Le'ts create the environment..."
+PROJECTFOLDER=/home/$USER/Development/
+mkdir -p $PROJECTFOLDER
 PROJECTFOLDER=/home/$USER/Development/$PROJECTNAME
-
-# Initialize the project
 npx create-react-app $PROJECTFOLDER
 cd $PROJECTFOLDER
-
-# Generate the template
 rm src/*
 cd src
 curl -o index.js https://redwall.sfo2.digitaloceanspaces.com/index-RCMS.js
@@ -35,6 +35,12 @@ echo '{ "extends": "react-app" }' > .eslintrc
 echo "# $PROJECTNAME  " > README.md
 
 cd $PROJECTFOLDER
+git init
+
+git add .
+git commit -m "First commit created by RCMS."
+
+git remote add origin $PROJECTREPO
 clear
 echo "DONE! Let's start coding."
 npm run start

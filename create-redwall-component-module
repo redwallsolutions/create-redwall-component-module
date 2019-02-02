@@ -9,7 +9,7 @@ echo "Great! Le'ts create the environment..."
 PROJECTFOLDER=/home/$USER/Development/
 mkdir -p $PROJECTFOLDER
 PROJECTFOLDER=/home/$USER/Development/$PROJECTNAME
-npx create-react-app $PROJECTFOLDER
+yarn create react-app $PROJECTFOLDER
 cd $PROJECTFOLDER
 rm src/*
 cd src
@@ -23,7 +23,7 @@ cd $PROJECTFOLDER
 rm package.json
 curl -o package.json https://redwall.sfo2.digitaloceanspaces.com/package-RCMS.json
 sed -i "s/{{projectname}}/$PROJECTNAME/" package.json
-npm install
+yarn
 
 # Set up transpilation
 echo '{ "presets": [["react-app", { "absoluteRuntime": false }]] }' > .babelrc
@@ -43,4 +43,4 @@ git commit -m "First commit created by RCMS."
 git remote add origin $PROJECTREPO
 clear
 echo "DONE! Let's start coding."
-npm run start
+yarn start

@@ -1,46 +1,47 @@
 #!/bin/bash
 
-echo "Welcome to Redwall Component Module Setup (RCMS)";
+echo "Welcome to Create Redwall Component Module Setup (CRCM)";
 echo "Please, what's the project name?"
 read PROJECTNAME
-echo "Nice. Now, what's the github repository of it?"
+echo "Nice. Now, what's the remote git repository URL of it?"
 read PROJECTREPO
-echo "Great! Le'ts create the environment..."
+echo "Great! Let's create the environment component module structure."
+
 PROJECTFOLDER=/home/$USER/Development/
 mkdir -p $PROJECTFOLDER
 PROJECTFOLDER=/home/$USER/Development/$PROJECTNAME
+
 yarn create react-app $PROJECTFOLDER
+
 cd $PROJECTFOLDER
 rm src/*
 cd src
 curl -o index.js https://redwall.sfo2.digitaloceanspaces.com/index-RCMS.js
 mkdir lib
 cd lib
-echo "//Dont forget to import and export your components here!" > index.js
+printf "import ItsWorking from './components/ItsWorking'\n\nexport {ItsWorking}" > index.js
+mkdir -p {components,assets/fonts}
+printf "import styled from 'styled-components'\nexport export const ItsWokingStyled = styled.h1\`\ntext-align: center;color: #E21306;\n\`" > components/Style.js
+printf "import React, {Component} from 'react'\nimport {ItsWokingStyled} from './Style'\n\nconst ItsWorking = () => (<ItsWorkingStyled>It's Working. (Made by Redwall Solutions)</ItsWokingStyled>)\n\nexport default ItsWorking" > components/ItsWorking.js
 cd $PROJECTFOLDER
 
-# Modify package.json
 rm package.json
 curl -o package.json https://redwall.sfo2.digitaloceanspaces.com/package-RCMS.json
 sed -i "s/{{projectname}}/$PROJECTNAME/" package.json
+
 yarn
+yarn add styled-components
 
-# Set up transpilation
 echo '{ "presets": [["react-app", { "absoluteRuntime": false }]] }' > .babelrc
-
-# Set up linting
 echo '{ "extends": "react-app" }' > .eslintrc
 
-# Rewite the README
 echo "# $PROJECTNAME  " > README.md
 
 cd $PROJECTFOLDER
+
 git init
-
 git add .
-git commit -m "First commit created by RCMS."
-
+git commit -m "First commit created by CRCM."
 git remote add origin $PROJECTREPO
-clear
-echo "DONE! Let's start coding."
-yarn start
+
+printf "DONE! Let's start coding.\nTry cd ${PROJECTFOLDER}\nyarn start\n"

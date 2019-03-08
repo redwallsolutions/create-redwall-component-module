@@ -1,6 +1,6 @@
-## RCMS (Redwall Component Module Setup)
+## CRCM (Create Redwall Component Module)
 
-This command line tool prepares the basic enrivonment used to create Redwall Component Module in React.
+This command line tool generates the basic structure to create Redwall Component Module in React.
 
 ## How to use it?
 

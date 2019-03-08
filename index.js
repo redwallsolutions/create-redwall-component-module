@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from "react-dom";
 
-import ItsWorking from './lib'
+import {ItsWorking} from './lib'
 
 const App = () => (
   <ItsWorking/>

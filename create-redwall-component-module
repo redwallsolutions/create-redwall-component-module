@@ -28,6 +28,8 @@ rm package.json
 curl -s -o package.json https://redwall.sfo2.digitaloceanspaces.com/create-redwall-component-module/package.json
 sed -i "s/{{projectname}}/$PROJECTNAME/" package.json
 
+curl -s -o Dockerfile https://redwall.sfo2.digitaloceanspaces.com/create-redwall-component-module/Dockerfile
+
 yarn install --silent
 
 echo '{ "presets": [["react-app", { "absoluteRuntime": false }]] }' > .babelrc

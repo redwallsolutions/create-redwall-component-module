@@ -21,7 +21,8 @@ curl -s -o src/index.js https://redwall.sfo2.digitaloceanspaces.com/create-redwa
 mkdir src/lib
 printf "import ItsWorking from './components/ItsWorking'\n\nexport {ItsWorking}" > src/lib/index.js
 mkdir -p src/lib/{components,assets/fonts}
-printf "import styled from 'styled-components'\n\nexport const ItsWorkingStyled = styled.h1\`\ntext-align: center;color: #E21306;\n\`" > src/lib/components/Style.js
+curl -s -o src/lib/components/Style.js https://redwall.sfo2.digitaloceanspaces.com/create-redwall-component-module/Style.js
+
 printf "import React, {Component} from 'react'\nimport {ItsWorkingStyled} from './Style'\n\nconst ItsWorking = () => (<ItsWorkingStyled>It's Working. (Made by Redwall Solutions)</ItsWorkingStyled>)\n\nexport default ItsWorking" > src/lib/components/ItsWorking.js
 
 rm package.json

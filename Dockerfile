@@ -4,8 +4,8 @@ WORKDIR /opt/module
 
 COPY . .
 
-RUN yarn
+RUN yarn add -G serve
 
-CMD ["yarn", "start"]
+CMD ["serve"]
 
 EXPOSE 3000

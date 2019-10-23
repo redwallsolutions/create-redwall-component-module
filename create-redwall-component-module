@@ -3,8 +3,7 @@
 printf "Welcome to \e[91mCreate Redwall Component Module\e[0m \e[1m(CRCM)\e[0m";
 printf "\nPlease, what's the project name?\n\e[91m"
 read PROJECTNAME
-printf "\e[0mNice. Now, what's the remote \e[1mgit repository URL\e[0m of it?\n\e[91m"
-read PROJECTREPO
+PROJECTREPO=https://github.com/redwallsolutions/$PROJECTNAME
 printf "\e[0m\e[1mGreat! \e[0mLet's create the environment component module structure.\n\e[0m"
 
 PROJECTFOLDER=/home/$USER/Development/

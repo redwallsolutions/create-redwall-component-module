@@ -6,7 +6,7 @@ This command line tool generates the basic structure to create Redwall Component
 
 Copy and paste the following command to have it installed.
 
-    echo "alias create-redwall-component-module='bash <( curl -s https://redwall.sfo2.digitaloceanspaces.com/create-redwall-component-module/create-redwall-component-module )'" >> ~/.bashrc && source ~/.bashrc
+    echo "alias create-redwall-component-module='bash <( curl -s https://github.com/redwallsolutions/create-redwall-component-module/blob/master/create-redwall-component-module)'" >> ~/.bashrc && source ~/.bashrc
 
 Enjoy it.
 

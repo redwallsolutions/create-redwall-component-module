@@ -17,15 +17,15 @@ clear
 cd $PROJECTFOLDER
 rm src/*
 printf "Downloading contents to create a new \e[91m\e[5mRedwall Component Module.\e[0m\n"
-curl -s -o src/index.js https://github.com/redwallsolutions/create-redwall-component-module/blob/master/index.js
+curl -s -o src/index.js https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/index.js
 mkdir src/lib
 mkdir -p src/lib/{components,assets}
-curl -s -o src/lib/components/Style.js https://github.com/redwallsolutions/create-redwall-component-module/blob/master/Style.js
+curl -s -o src/lib/components/Style.js https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/Style.js
 rm package.json
-curl -s -o package.json https://github.com/redwallsolutions/create-redwall-component-module/blob/master/package.json
+curl -s -o package.json https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/package.json
 sed -i "s/{{projectname}}/$PROJECTNAME/" package.json
 sed -i "s/{{projectrepo}}/$PROJECTREPO/" package.json
-curl -s -o .npmrc https://github.com/redwallsolutions/create-redwall-component-module/blob/master/.npmrc
+curl -s -o .npmrc https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/.npmrc
 
 yarn install --silent --update-checksums
 

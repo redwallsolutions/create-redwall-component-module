@@ -8,11 +8,11 @@ Copy and paste the following command to have it installed.
 
 Using default bash
 
-    echo "alias create-redwall-component-module='bash <( curl -s https://github.com/redwallsolutions/create-redwall-component-module/blob/master/create-redwall-component-module)'" >> ~/.bashrc && source ~/.bashrc
+    echo "alias create-redwall-component-module='bash <( curl -s https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/create-redwall-component-module)'" >> ~/.bashrc && source ~/.bashrc
 
 Using zsh 
 
-    echo "alias create-redwall-component-module='bash <( curl -s https://github.com/redwallsolutions/create-redwall-component-module/blob/master/create-redwall-component-module)'" >> ~/.zshrc && source ~/.zshrc
+    echo "alias create-redwall-component-module='bash <( curl -s https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/create-redwall-component-module)'" >> ~/.zshrc && source ~/.zshrc
 
 
 Enjoy it.

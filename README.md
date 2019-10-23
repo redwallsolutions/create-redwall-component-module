@@ -10,4 +10,4 @@ Copy and paste the following command to have it installed.
 
 Enjoy it.
 
-Created for Redwall Solutions.
+Created by Redwall Solutions team.

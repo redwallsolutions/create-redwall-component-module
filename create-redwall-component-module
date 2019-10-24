@@ -3,28 +3,28 @@
 printf "Welcome to \e[91mCreate Redwall Component Module\e[0m \e[1m(CRCM)\e[0m";
 printf "\nPlease, what's the project name?\n\e[91m"
 read PROJECTNAME
-PROJECTREPO=https://github.com/redwallsolutions/$PROJECTNAME
+PROJECTREPO="https://github.com/redwallsolutions/$PROJECTNAME"
 printf "\e[0m\e[1mGreat! \e[0mLet's create the environment component module structure.\n\e[0m"
 
 PROJECTFOLDER=/home/$USER/Development/
 mkdir -p $PROJECTFOLDER
-PROJECTFOLDER=/home/$USER/Development/$PROJECTNAME
+PROJECTFOLDER=$PROJECTFOLDER$PROJECTNAME
 
 yarn create react-app $PROJECTFOLDER --typescript
 
-clear
-cd $PROJECTFOLDER
-rm src/*
+rm $PROJECTFOLDER/src/*
 printf "Downloading contents to create a new \e[91m\e[5mRedwall Component Module.\e[0m\n"
-curl -s -o src/index.js https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/index.js
-mkdir src/lib
-mkdir -p src/lib/{components,assets}
-curl -s -o src/lib/components/Style.js https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/Style.js
-rm package.json
-curl -s -o package.json https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/package.json
-sed -i "s/{{projectname}}/$PROJECTNAME/" package.json
-sed -i "s/{{projectrepo}}/$PROJECTREPO/" package.json
-curl -s -o .npmrc https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/.npmrc
+curl -s -o $PROJECTFOLDER/src/index.js https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/index.js
+mkdir $PROJECTFOLDER/src/lib
+mkdir -p $PROJECTFOLDER/src/lib/{components,assets}
+curl -s -o $PROJECTFOLDER/src/lib/components/Style.js https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/Style.js
+rm $PROJECTFOLDER/package.json
+curl -s -o $PROJECTFOLDER/package.json https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/package.json
+sed -i "s/{{projectname}}/$PROJECTNAME/" $PROJECTFOLDER/package.json
+sed -i "s/{{projectrepo}}/https:\/\/github.com\/redwallsolutions\/$PROJECTNAME/" $PROJECTFOLDER/package.json
+curl -s -o $PROJECTFOLDER/.npmrc https://raw.githubusercontent.com/redwallsolutions/create-redwall-component-module/master/.npmrc
+
+cd $PROJECTFOLDER
 
 yarn install --silent --update-checksums
 

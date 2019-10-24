@@ -1,36 +1,39 @@
-import React from 'react';
-import { render } from "react-dom";
-import { ThemeProvider } from 'styled-components';
-import {ItsWorking} from './lib'
+import React from 'react'
+import { render } from 'react-dom'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-class App extends React.Component {
+const Reset = createGlobalStyle`
+  body {
+    padding: 0;
+    margin: 0;
 
-  state = {
-    mode: 'light'
+    .container {
+      transition: .3s;
+      padding: 0;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      padding: 2em;
+      display: flex;
+      justify-content: center;
+      background-color: ${props =>
+				props.mode === 'light' ? 'white' : '#3C4043'};
+    }
   }
-
-  changeMode = (input) => {
-    const mode = input.target.id
-    this.setState({
-      mode
-    });
-  }
-
-  render() {
-    return (
-      <ThemeProvider theme={{mode:this.state.mode}}>
-        <div style={{transition: 'all .3s', height: '99vh', width: '98vw', backgroundColor: this.state.mode === 'dark' ? 'rgb(44, 55, 56)' : 'rgb(244, 244, 244)'}}>
-          <div style={{display: 'flex', justifyContent: 'center'}}>
-            <label htmlFor='light'>Light Mode</label>
-            <input type='radio' id='light' name='mode' onChange={this.changeMode}/>
-            <label htmlFor='dark'>Dark Mode</label>
-            <input  type='radio' id='dark' name='mode' onChange={this.changeMode}/>
-          </div>
-          <ItsWorking/>
-        </div>
-      </ThemeProvider>
-    )
-  }
+`
+const App = () => {
+	const [mode, setMode] = useState('light')
+	return (
+		<ThemeProvider theme={{ mode }}>
+			<div className="container">
+        <Reset mode={mode}/>
+				<label>Mode Light</label>
+				<input name="mode" type="radio" onChange={() => setMode('light')} />
+				<label>Mode Dark</label>
+				<input name="mode" type="radio" onChange={() => setMode('dark')} />
+			</div>
+		</ThemeProvider>
+	)
 }
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'))

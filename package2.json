@@ -1,5 +1,5 @@
 {
-  "name": "@redwallsolutions/create-redwall-component-module",
+  "name": "@redwallsolutions/sequelize",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -11,7 +11,7 @@
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output"
   },
   "types": "dist/index.d.ts",
-  "repository": "{{projectrepo}}",
+  "repository": "https://github.com/redwallsolutions/sequelize.git",
   "author": "{{projectauthor}}",
   "license": "MIT",
   "devDependencies": {

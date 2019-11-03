@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs').promises
 const readline = require('readline-sync')
 const git = require('simple-git')()
+const rimraf = require('rimraf')
 
 const bold = chalk.bold
 const successColor = bold.cyan
@@ -90,7 +91,7 @@ function replaceDataInSkeletonFiles({
 			.replace(/{{projectname}}|create-redwall-component-module/g, projectname)
 			.replace(/{{projectname-ts}}/g, projectname.replace(/-/g, ''))
 			.replace(/{{projectrepo}}/g, projectrepo)
-			.replace(/     "setup": "yarn add -D chalk simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",/, '')
+			.replace(/\n    "setup": "yarn add -D chalk simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",/, '')
 	})
 }
 
@@ -101,6 +102,7 @@ function writeReadyFiles(readyFiles) {
 }
 
 function prepareGitRepo(projectrepo) {
+	rimraf('.git')
 	git.init().add(".").commit("First commit create by CRCM").addRemote("origin", projectrepo)
 }
 

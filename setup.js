@@ -35,28 +35,27 @@ async function execute() {
 	await Promise.all(
 		writeReadyFiles([
 			{
-				path: 'package2.json',
+				path: 'package.json',
 				file: replacedFiles[0]
 			},
 			{
-				path: 'demo/index2.html',
+				path: 'demo/index.html',
 				file: replacedFiles[1]
 			},
 			{
-				path: 'src/lib/index2.ts',
+				path: 'src/lib/index.ts',
 				file: replacedFiles[2]
 			},
 			{
-				path: 'src/lib/components/index2.tsx',
+				path: 'src/lib/components/index.tsx',
 				file: replacedFiles[3]
 			}
 		])
 	)
 	console.log(successColor('Files were created!'))
-	prepareGitRepo()
+	await prepareGitRepo()
 	console.log(successColor("We're done."))
-	console.log(bold("Now you can execute the following commands:"))
-	
+	console.log(bold('Now you can execute the following commands:'))
 }
 
 function getProjectName() {
@@ -91,7 +90,10 @@ function replaceDataInSkeletonFiles({
 			.replace(/{{projectname}}|create-redwall-component-module/g, projectname)
 			.replace(/{{projectname-ts}}/g, projectname.replace(/-/g, ''))
 			.replace(/{{projectrepo}}/g, projectrepo)
-			.replace(/\n    "setup": "yarn add -D chalk simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",/, '')
+			.replace(
+				/\n    "setup": "yarn add -D chalk simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",/,
+				''
+			)
 	})
 }
 
@@ -102,8 +104,16 @@ function writeReadyFiles(readyFiles) {
 }
 
 function prepareGitRepo(projectrepo) {
-	rimraf('.git')
-	git.init().add(".").commit("First commit create by CRCM").addRemote("origin", projectrepo)
+	return new Promise((resolve, reject) => {
+		rimraf('.git', function() {
+			git
+				.init()
+				.add('.')
+				.commit('First commit create by CRCM')
+				.addRemote('origin', projectrepo)
+			resolve()
+		})
+	})
 }
 
 execute()

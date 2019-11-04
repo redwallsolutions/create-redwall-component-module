@@ -11,6 +11,7 @@ const redColor = bold.redBright
 const muteColor = bold.rgb(100, 100, 100)
 
 async function execute() {
+	console.clear()
 	console.log(
 		bold(
 			`Hello dev ${process.env.USER}, welcome to ${redColor(
@@ -54,8 +55,9 @@ async function execute() {
 	)
 	console.log(successColor('Files were created!'))
 	await prepareGitRepo()
+	await clearConfigFiles()
+	await writeNewReadmeFile()
 	console.log(successColor("We're done."))
-	console.log(bold('Now you can execute the following commands:'))
 }
 
 function getProjectName() {
@@ -114,6 +116,17 @@ function prepareGitRepo(projectrepo) {
 			resolve()
 		})
 	})
+}
+
+function clearConfigFiles(){
+	return new Promise((resolve, reject)=> {
+		rimraf('setup.js', resolve)
+	})
+}
+
+async function writeNewReadmeFile(projectname) {
+	await fs.readFile("README.md", {encoding: "UTF-8"})
+	await fs.writeFile("README.md", `## ${projectname}`)
 }
 
 execute()

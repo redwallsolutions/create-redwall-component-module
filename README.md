@@ -1,20 +1,49 @@
-## CRCM (Create Redwall Component Module)
 
-This command line tool generates the basic structure to create Redwall Component Module in React.
+## CRCM (Create (Redwall|React) Component Module)
+
+  
+
+This command line tool generates a basic structure to develop a new typescript react component.
+
+  
 
 ## How to use it?
 
-Copy and paste the following command to have it installed.
+  
 
-Using default bash
+Clone this repo to some awesome place you're used to dev
 
-    echo "alias create-redwall-component-module='bash <( git clone https://github.com/redwallsolutions/create-redwall-component-module)'" >> ~/.bashrc && source ~/.bashrc
+    git clone https://github.com/redwallsolutions/create-redwall-component-module <<component-name>>
 
-Using zsh 
+Navigate to component folder
 
-    echo "alias create-redwall-component-module='bash <( git clone https://github.com/redwallsolutions/create-redwall-component-module)'" >> ~/.zshrc && source ~/.zshrc
+    cd <<component-name>>
+  
+ Start the setup 
 
+    yarn setup
+  
+That's it.  
 
-Enjoy it.
+Now you can develop your component from "lib" folder.
 
-Created by Redwall Solutions team.
+## Serving and Building
+
+This structure has 2 built-in scripts to help you develop your awesome component:
+
+**start** and **build**.
+
+The `start`script starts a local development server using parcel bundler. It helps you to visualize your component while you're developing it.
+
+Just type `yarn start` and see your default browser opening a new tab at **http://localhost:1234**.
+
+The `build` script transpiles your code to a distribution folder called **dist**. In this folder, you'll notice 2 files for each TSX file you created. Theses files are, respectively:
+
+ - transpiled JS file based on your TSX file.
+ - declaration type file (d.ts) based on your TSX file.
+
+This folder is the root folder to publish your component in registries (github, npm, etc...)
+
+Just type `yarn build` and see a dist folder being generated and containing all above described files.
+
+**ENJOY IT**.

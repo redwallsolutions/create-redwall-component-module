@@ -8,7 +8,9 @@
   ],
   "scripts": {
     "setup": "yarn add -D chalk simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",
-    "start": "rimraf demo/output && parcel demo/index.html -d demo/output"
+    "start": "rimraf demo/output && parcel demo/index.html -d demo/output",
+    "predeploy": "rimraf demo/output && parcel build demo/index.html -d demo/output",
+    "deploy": "gh-pages -d demo/output"
   },
   "types": "dist/index.d.ts",
   "repository": "{{projectrepo}}",
@@ -19,6 +21,7 @@
     "@types/react-dom": "^16.9.3",
     "@types/styled-components": "^4.1.20",
     "babel-preset-react-app": "^9.0.2",
+    "gh-pages": "^2.1.1",
     "parcel-bundler": "^1.12.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",

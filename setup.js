@@ -54,7 +54,7 @@ async function execute() {
 		])
 	)
 	console.log(successColor('Files were created!'))
-	await prepareGitRepo()
+	await prepareGitRepo(projectrepo)
 	await clearConfigFiles()
 	await writeNewReadmeFile()
 	console.log(successColor("We're done."))

@@ -96,6 +96,7 @@ function replaceDataInSkeletonFiles({
 				/\n    "setup": "yarn add -D chalk simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",/,
 				''
 			)
+			.replace(/{{projectauthor}}/g, process.env.USER)
 	})
 }
 

@@ -7,9 +7,9 @@
     "dist"
   ],
   "scripts": {
-    "setup": "yarn install --silent && yarn add -D simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",
+    "setup": "yarn install --silent node setup.js && yarn remove chalk simple-git readline-sync",
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output",
-    "predeploy": "rimraf demo/output && parcel build demo/index.html -d demo/output",
+    "predeploy": "rimraf demo/output && parcel build demo/index.html -d demo/output --public-url ./",
     "deploy": "gh-pages -d demo/output"
   },
   "types": "dist/index.d.ts",
@@ -27,12 +27,12 @@
     "react-dom": "^16.11.0",
     "rimraf": "^3.0.0",
     "styled-components": "^4.4.1",
-    "typescript": "^3.6.4"
-  },
-  "dependencies": {
-    "@redwallsolutions/theming-component-module": "^2.0.1",
+    "typescript": "^3.6.4",
     "chalk": "^2.4.2",
     "readline-sync": "^1.4.10",
     "simple-git": "^1.126.0"
+  },
+  "dependencies": {
+    "@redwallsolutions/theming-component-module": "^2.0.1"
   }
 }

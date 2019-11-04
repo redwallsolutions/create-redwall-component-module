@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "setup": "yarn add -D chalk simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",
+    "setup": "yarn install --silent && yarn add -D simple-git readline-sync && node setup.js && yarn remove chalk simple-git readline-sync",
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output",
     "predeploy": "rimraf demo/output && parcel build demo/index.html -d demo/output",
     "deploy": "gh-pages -d demo/output"

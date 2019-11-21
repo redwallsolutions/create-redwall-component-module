@@ -8,8 +8,9 @@
     "dist"
   ],
   "scripts": {
-    "setup": "yarn install --silent node setup.js && yarn remove chalk simple-git readline-sync",
+    "setup": "yarn --silent && node setup.js && yarn remove chalk simple-git readline-sync",
     "test": "echo \"No tests specified.\"",
+    "build": "rimraf dist && tsc",
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output",
     "docz:dev": "docz dev",
     "docz:build": "rimraf demo/output && docz build",
